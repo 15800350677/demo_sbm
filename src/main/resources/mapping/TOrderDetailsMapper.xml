@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.modoo.mapper.TOrderDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.modoo.entity.TOrderDetails" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="med_name" property="medName" jdbcType="VARCHAR" />
+    <result column="med_specification" property="medSpecification" jdbcType="VARCHAR" />
+    <result column="med_gyzz" property="medGyzz" jdbcType="INTEGER" />
+    <result column="med_amount" property="medAmount" jdbcType="INTEGER" />
+    <result column="med_unit_price" property="medUnitPrice" jdbcType="INTEGER" />
+    <result column="med_total_price" property="medTotalPrice" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, med_name, med_specification, med_gyzz, med_amount, med_unit_price, 
+    med_total_price, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_order_details
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_order_details
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.modoo.entity.TOrderDetails" >
+    insert into t_order_details (id, order_id, med_name, 
+      med_specification, med_gyzz, med_amount, 
+      med_unit_price, med_total_price, remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{medName,jdbcType=VARCHAR}, 
+      #{medSpecification,jdbcType=VARCHAR}, #{medGyzz,jdbcType=INTEGER}, #{medAmount,jdbcType=INTEGER}, 
+      #{medUnitPrice,jdbcType=INTEGER}, #{medTotalPrice,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.modoo.entity.TOrderDetails" >
+    insert into t_order_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="medName != null" >
+        med_name,
+      </if>
+      <if test="medSpecification != null" >
+        med_specification,
+      </if>
+      <if test="medGyzz != null" >
+        med_gyzz,
+      </if>
+      <if test="medAmount != null" >
+        med_amount,
+      </if>
+      <if test="medUnitPrice != null" >
+        med_unit_price,
+      </if>
+      <if test="medTotalPrice != null" >
+        med_total_price,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="medName != null" >
+        #{medName,jdbcType=VARCHAR},
+      </if>
+      <if test="medSpecification != null" >
+        #{medSpecification,jdbcType=VARCHAR},
+      </if>
+      <if test="medGyzz != null" >
+        #{medGyzz,jdbcType=INTEGER},
+      </if>
+      <if test="medAmount != null" >
+        #{medAmount,jdbcType=INTEGER},
+      </if>
+      <if test="medUnitPrice != null" >
+        #{medUnitPrice,jdbcType=INTEGER},
+      </if>
+      <if test="medTotalPrice != null" >
+        #{medTotalPrice,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.modoo.entity.TOrderDetails" >
+    update t_order_details
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="medName != null" >
+        med_name = #{medName,jdbcType=VARCHAR},
+      </if>
+      <if test="medSpecification != null" >
+        med_specification = #{medSpecification,jdbcType=VARCHAR},
+      </if>
+      <if test="medGyzz != null" >
+        med_gyzz = #{medGyzz,jdbcType=INTEGER},
+      </if>
+      <if test="medAmount != null" >
+        med_amount = #{medAmount,jdbcType=INTEGER},
+      </if>
+      <if test="medUnitPrice != null" >
+        med_unit_price = #{medUnitPrice,jdbcType=INTEGER},
+      </if>
+      <if test="medTotalPrice != null" >
+        med_total_price = #{medTotalPrice,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.modoo.entity.TOrderDetails" >
+    update t_order_details
+    set order_id = #{orderId,jdbcType=INTEGER},
+      med_name = #{medName,jdbcType=VARCHAR},
+      med_specification = #{medSpecification,jdbcType=VARCHAR},
+      med_gyzz = #{medGyzz,jdbcType=INTEGER},
+      med_amount = #{medAmount,jdbcType=INTEGER},
+      med_unit_price = #{medUnitPrice,jdbcType=INTEGER},
+      med_total_price = #{medTotalPrice,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
